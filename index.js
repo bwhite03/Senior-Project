@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const ClientRoute = require("./routes/client");
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ dotenv.config();
 app.use(express.static("client/build"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(ClientRoute);
 
 //Connect database
 mongoose.connect(process.env.DB_CONNECT, {
