@@ -18,6 +18,7 @@ router.post("/client", (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     age: req.body.age,
+    id: req.body.id,
   });
 
   newClient.save((err, client) => {

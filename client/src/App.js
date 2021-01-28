@@ -10,9 +10,9 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("/tweets")
+      .get("/clients")
       .then((res) => {
-        setClients(res);
+        setClients(res.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -23,7 +23,7 @@ function App() {
     <Container maxWidth="lg">
       <h1 style={{ textAlign: "center" }}>GT Care Client Database</h1>
       <ClientDialog />
-      <DataTable />
+      <DataTable clients={clients} />
     </Container>
   );
 }

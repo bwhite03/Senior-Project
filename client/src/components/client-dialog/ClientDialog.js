@@ -7,12 +7,14 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { v4 as uuidv4 } from "uuid";
 
 function ClientDialog() {
   const [open, setOpen] = React.useState(false);
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [age, setAge] = React.useState();
+  const id = uuidv4();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,6 +30,7 @@ function ClientDialog() {
         firstName,
         lastName,
         age,
+        id,
       })
       .then((res) => {
         console.log(res);
@@ -66,7 +69,6 @@ function ClientDialog() {
           />
           <TextField
             onChange={(e) => setLastName(e.target.value)}
-            autoFocus
             margin="dense"
             id="lastName"
             label="Last Name"
@@ -75,7 +77,6 @@ function ClientDialog() {
           />
           <TextField
             onChange={(e) => setAge(e.target.value)}
-            autoFocus
             margin="dense"
             id="age"
             label="Age"

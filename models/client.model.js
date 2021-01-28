@@ -13,6 +13,7 @@ const ClientSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  id: {},
 });
 
 module.exports = mongoose.model("Client", ClientSchema);
