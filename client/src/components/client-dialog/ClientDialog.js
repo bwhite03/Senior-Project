@@ -9,12 +9,19 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { v4 as uuidv4 } from "uuid";
 
-function ClientDialog() {
+function ClientDialog({ setClients, clients }) {
   const [open, setOpen] = React.useState(false);
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [age, setAge] = React.useState();
   const id = uuidv4();
+
+  const data = {
+    firstName,
+    lastName,
+    age,
+    id,
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -33,7 +40,7 @@ function ClientDialog() {
         id,
       })
       .then((res) => {
-        console.log(res);
+        setClients([...clients, data]);
       })
       .catch(function (error) {
         console.log(error);
@@ -41,7 +48,7 @@ function ClientDialog() {
 
     setFirstName("");
     setLastName("");
-    setAge();
+    setAge("");
     setOpen(false);
   };
 

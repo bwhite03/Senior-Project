@@ -22,7 +22,7 @@ function App() {
   return (
     <Container maxWidth="lg">
       <h1 style={{ textAlign: "center" }}>GT Care Client Database</h1>
-      <ClientDialog />
+      <ClientDialog clients={clients} setClients={setClients} />
       <DataTable clients={clients} />
     </Container>
   );
