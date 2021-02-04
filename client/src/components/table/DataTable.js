@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import axios from "axios";
 import Button from "@material-ui/core/Button";
 import { DataGrid } from "@material-ui/data-grid";
 
@@ -10,7 +11,14 @@ function DataTable({ clients, setClients }) {
   };
 
   const handleDelete = () => {
-    setClients(clients.filter((row) => row.id !== selectedRow.id));
+    axios
+      .delete(`/deleteclient/${selectedRow.id}`, {})
+      .then((res) => {
+        setClients(clients.filter((row) => row.id !== selectedRow.id));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   const columns = [

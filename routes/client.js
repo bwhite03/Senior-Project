@@ -30,4 +30,14 @@ router.post("/client", (req, res) => {
   });
 });
 
+router.delete("/deleteclient/:id", (req, res) => {
+  Client.deleteOne(
+    { id: req.params.id },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+  res.end();
+});
+
 module.exports = router;
